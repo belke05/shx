@@ -1,4 +1,4 @@
-const express = require("express"); // import express in this module
-const router = new express.Router(); // create an app sub-module (router)
+const express = require("express"); 
+const router = new express.Router(); 
 
 module.exports = router;

@@ -1,13 +1,14 @@
 {
   "name": "shop-express",
   "version": "1.0.0",
-  "description": "",
+  "description": "Good news : Your team has been selected by our final client !",
   "main": "server.js",
   "dependencies": {
     "bcrypt": "^3.0.6",
     "cloudinary": "^1.14.0",
     "connect-mongo": "^3.0.0",
     "cookie-parser": "^1.4.4",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "hbs": "^4.0.4",
@@ -17,9 +18,18 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon ./server.js -e js,hbs"
+    "server": "nodemon ./server.js -e js,hbs",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belke05/shx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/belke05/shx/issues"
+  },
+  "homepage": "https://github.com/belke05/shx#readme"
 }

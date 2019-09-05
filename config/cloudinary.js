@@ -13,17 +13,10 @@ const storage = cloudinaryStorage({
   folder: "user-pictures",
   allowedFormats: ['jpg', 'png'],
   filename: function (req, file, cb) {
-    // console.log("request =>", req);
-    // console.log("file =>", file);
     cb(null, file.originalname);
-    // The file on cloudinary would have the same name as the original file name
   }
-  // params below is only needed if uploading media types other than images (video, audio...)
-  // params: {
-  //     ressource_type: "raw"
-  // }
 });
 
-const fileUploader = multer({ storage }); // this function makes the upload process possible !!!!
+const fileUploader = multer({ storage }); 
 
 module.exports = fileUploader;
