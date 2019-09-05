@@ -1,6 +1,7 @@
 const express = require("express");
 const router = new express.Router();
 const bcrypt = require("bcrypt");
+const userModel = require('../models/User');
 module.exports = router;
 
 router.post("/signup", (req, res, next) => {
