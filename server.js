@@ -1,5 +1,3 @@
-
-
 require("dotenv").config();
 require("./config/mongodb"); // database initial setup
 require("./utils/helpers-hbs"); // utils for hbs templates

@@ -5,12 +5,16 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+router.get("/home", (req,res)=>{
+  res.render("index");
+})
+
 router.get("/sneakers/:cat", (req, res) => {
-  res.render("products"); 
+  res.render("products");
 });
 
 router.get("/one-product/:id", (req, res) => {
-  res.render("one-product");
+  res.render("one_product");
 });
 
 router.get("/signup", (req, res) => {
