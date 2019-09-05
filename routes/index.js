@@ -25,5 +25,8 @@ router.get("/signin", (req, res) => {
   res.render("signin");
 });
 
+router.get("/home", (req,res)=>{
+  res.redirect("/");
+});
 
 module.exports = router;
