@@ -8,9 +8,16 @@ router.get("/", (req, res) => {
 });
 
 router.get("/sneakers/:cat", (req, res) => {
-  sneakers.find()
-  res.render("products"); 
+  const cat = req.params.cat;
+  sneakers.find({ category: cat })
+  .then(category =>{
+    res.render("products",{ category });
+  })
+  .catch(err =>{console.log(err);
+  });
+  
 });
+
 
 router.get("/sneakers",(req,res)=>{
   sneakers.find().then(
