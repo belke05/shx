@@ -1,7 +1,7 @@
 const express = require("express");
-const router = new express.Router();
+const router = express.Router();
 const bcrypt = require("bcrypt");
-
+const userModel = require("../models/User");
 
 
 router.post("/signup", (req, res, next) => {
@@ -22,8 +22,10 @@ router.post("/signup", (req, res, next) => {
           user.password = hashed;
           userModel
             .create(user)
-            .then(() => res.redirect("/signin"))
-            .catch(next(err));
+            .then(() => {
+              res.redirect("/signin")
+            })
+            .catch(err => next(err));
         })
         .catch(dbErr => {
           next(dbErr);
@@ -36,7 +38,7 @@ router.post("/signup", (req, res, next) => {
   router.post("/signin", (req, res, next) => {
     const user = req.body;
     if (!user.email || !user.password) {
-      res.render("login", { errorMsg: "Please fill in all the fields" });
+      res.render("signin", { errorMsg: "Please fill in all the fields" });
     }
     userModel
       .findOne({ email: user.email })
@@ -55,6 +57,7 @@ router.post("/signup", (req, res, next) => {
         }
       })
       .catch(dbErr => {
+        req.session.destroy();
         next(dbErr);
       });
   });
