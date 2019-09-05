@@ -6,19 +6,23 @@ router.get("/", (req, res) => {
 });
 
 router.get("/sneakers/:cat", (req, res) => {
-  res.send("bar");
+  res.render("products"); 
 });
 
 router.get("/one-product/:id", (req, res) => {
-  res.send("baz");
+  res.render("one-product");
 });
 
 router.get("/signup", (req, res) => {
-  res.send("sneak");
+  res.render("signup");
 });
 
 router.get("/signin", (req, res) => {
-  res.send("love");
+  res.render("signin");
+});
+
+router.get("/home", (req,res)=>{
+  res.redirect("/");
 });
 
 module.exports = router;
