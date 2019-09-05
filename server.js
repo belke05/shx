@@ -1,4 +1,4 @@
-return console.log("node says : waxOn/waxOff !");
+// return console.log("node says : waxOn/waxOff !");
 
 require("dotenv").config();
 require("./config/mongodb"); // database initial setup
@@ -81,3 +81,13 @@ const listener = app.listen(process.env.PORT, () => {
     `app started at ${process.env.SITE_URL}:${process.env.PORT}`
   );
 });
+
+const index = require("./routes/index");
+const dash = require("./routes/dashboard_sneaker");
+const auth = require("./routes/auth")
+
+app.use(index);
+app.use(dash);
+app.use(auth);
+
+module.exports = app;
