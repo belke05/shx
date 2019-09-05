@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
-const labelSchema = new Schema({
-  label: String
+const TagSchema = new Schema({
+   label: String
 });
 
-const labelModel = mongoose.model("Label", userSchema);
+const Tag = mongoose.model("Tag", TagSchema);
 
-module.exports = labelModel;
+module.exports = Tag;
+
