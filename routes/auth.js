@@ -1,13 +1,10 @@
 const express = require("express");
 const router = new express.Router();
 const bcrypt = require("bcrypt");
-<<<<<<< HEAD
+
 const userModel = require('../models/User');
-module.exports = router;
-=======
 
 
->>>>>>> 84ce6b758ce97d30ba253b5b52e0d07f58371ef7
 
 router.post("/signup", (req, res, next) => {
     const user = req.body; 

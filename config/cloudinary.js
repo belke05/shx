@@ -11,12 +11,16 @@ cloudinary.config({
 const storage = cloudinaryStorage({
   cloudinary,
   folder: "products",
-  allowedFormats: ['jpg', 'png'],
-  filename: function (req, file, cb) {
+
+  allowedFormats: ["jpg", "png"],
+  filename: function(req, file, cb) {
+
     cb(null, file.originalname);
+    // The file on cloudinary would have the same name as the original file name
   }
 });
 
-const fileUploader = multer({ storage }); 
+const uploadCloud = multer({ storage: storage });
 
-module.exports = fileUploader;
+module.exports = uploadCloud;
+
