@@ -81,9 +81,7 @@ const listener = app.listen(process.env.PORT, () => {
   console.log(`app started at ${process.env.SITE_URL}:${process.env.PORT}`);
 });
 
-const index = require("./routes/index");
-const dash = require("./routes/dashboard_sneaker");
-const auth = require("./routes/auth")
+
 
 app.use(index);
 app.use(dash);
