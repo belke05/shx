@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const userModel = require("../models/User");
 
 
+
 router.post("/signup", (req, res, next) => {
     const user = req.body; 
     if (!user.email || !user.password) {
