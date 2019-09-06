@@ -8,6 +8,20 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+router.post("/filter/tags", (req, res) => {
+  const { tags } = req.body;
+  // console.log(tags);
+  // const filterid = req.params.filter_id;
+  sneakers
+    .find({ id_tags: tags })
+    .then(sneakers => {
+      res.send(sneakers);
+    })
+    .catch(dberr => {
+      console.log(dberr);
+    });
+});
+
 router.get("/sneakers/collection", (req, res) => {
   tags
     .find()
@@ -15,7 +29,8 @@ router.get("/sneakers/collection", (req, res) => {
       sneakers
         .find()
         .then(sneakers => {
-          res.render("products", { sneakers, tags }), console.log("sneakers");
+          res.render("products", { sneakers, tags, scripts: ["filter.js"] }),
+            console.log("sneakers");
         })
         .catch(console.log("error looking up sneakers"));
     })
@@ -34,7 +49,12 @@ router.get("/sneakers/:cat", (req, res) => {
         .find({ sneakers: sneak, category: cat })
         .then(sneakers => {
           console.log("the shoes in the category are", sneakers);
-          res.render("products", { sneakers, tags, category: cat });
+          res.render("products", {
+            sneakers,
+            tags,
+            category: cat,
+            scripts: ["filter.js"]
+          });
         })
         .catch(console.log("error looking up sneakers"));
     })
