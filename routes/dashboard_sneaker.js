@@ -14,7 +14,8 @@ router.get("/prod-add", (req, res, next) => {
       console.log("error finding the tags", dbErr);
     });
 });
-// ENDNENENENENENENEENE HERE
+
+
 router.post(
   "/prod-add",
   uploadMiddleware.single("sneaker_img"),
@@ -40,11 +41,12 @@ router.post(
     if (req.file) {
       newSneaker.imgName = req.file.originalname;
       newSneaker.imgPath = req.file.secure_url;
-    }
+    }else console.log("pas de fichier")
     Sneaker.create(newSneaker)
       .then(createdSneaker => {
         console.log(createdSneaker, "was created");
-        res.redirect("/prod-add");
+        // res.redirect("/prod-add");
+        res.redirect("/sneakers");
       })
       .catch(dbErr => {
         console.log("error during creation of new sneaker", dbErr);
