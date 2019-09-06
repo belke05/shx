@@ -10,11 +10,12 @@ const SneakerSchema = new Schema({
   category: { type: String, enum: ["women", "men", "children"] },
   imgName: String,
   imgPath: String,
-  id_tags: [{ type: Schema.Types.ObjectId, ref: "Tag" }]
+  id_tags: { type: Schema.Types.ObjectId, ref: "Tag" }
   // how to link document from different collections ?
   // tells Mongoose this ID connects to the "Category" model
 });
 
+SneakerSchema.index({ ref: 1 }, { unique: true }); // ensure unique ref
 const Sneaker = mongoose.model("Sneaker", SneakerSchema);
 
 module.exports = Sneaker;

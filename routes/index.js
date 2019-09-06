@@ -14,7 +14,7 @@ router.get("/sneakers/:cat", (req, res) => {
     .find()
     .then(tags => {
       sneakers
-        .find()
+        .find({ category: cat })
         .then(category => {
           console.log("the shoes in the category are", category);
           res.render("products", { category, tags });
