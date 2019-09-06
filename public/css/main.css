@@ -1,3 +1,4 @@
+
 @import './reset.css';
 @import './header-nav.css';
 @import './footer.css';
@@ -46,3 +47,9 @@ h4 {
 .flexed-item {
   display: flex;
 }
+
+
+
+
+
+@import './media-queries.css';
