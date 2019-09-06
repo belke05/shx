@@ -67,6 +67,13 @@ function eraseSessionMessage() {
   };
 }
 
+
+
+// AJAX test 
+
+
+
+////////////////
 app.use(checkloginStatus);
 app.use(eraseSessionMessage());
 
@@ -80,8 +87,6 @@ app.use("/", basePageRouter);
 const listener = app.listen(process.env.PORT, () => {
   console.log(`app started at ${process.env.SITE_URL}:${process.env.PORT}`);
 });
-
-
 
 app.use(index);
 app.use(dash);

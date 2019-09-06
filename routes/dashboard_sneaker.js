@@ -19,7 +19,7 @@ router.get("/prod-add", (req, res, next) => {
   Tags.find()
     .then(tags => {
       console.log("the tags are", tags);
-      res.render("products_add", { tags });
+      res.render("products_add", { tags, scripts: ["client.js"] });
     })
     .catch(dbErr => {
       console.log("error finding the tags", dbErr);
@@ -72,8 +72,7 @@ router.post("/tag-add", (req, res, next) => {
   const newTag = { label };
   Tags.create(newTag)
     .then(createdTag => {
-      console.log(createdTag, "was created as a tag");
-      res.redirect("/prod-add");
+      res.send(createdTag)
     })
     .catch(dbErr => {
       console.log("error creating a new tag", dbErr);
@@ -86,7 +85,7 @@ router.get("/product-edit/:id", (req, res, next) => {
     .then(sneaker => {
       Tags.find()
         .then(tags => {
-          res.render("product_edit", { sneaker, tags });
+          res.send("product_edit", { sneaker, tags });
         })
         .catch(dbErr => {
           console.log("error during finding of all tags", tags);

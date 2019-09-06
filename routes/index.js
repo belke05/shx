@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
-router.get("/sneakers/collection", (req, res) => {
+router.get("/sneakers", (req, res) => {
     tags
     .find()
     .then(tags => {
