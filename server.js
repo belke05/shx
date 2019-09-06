@@ -67,13 +67,6 @@ function eraseSessionMessage() {
   };
 }
 
-
-
-// AJAX test 
-
-
-
-////////////////
 app.use(checkloginStatus);
 app.use(eraseSessionMessage());
 
