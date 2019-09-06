@@ -8,8 +8,8 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
-router.get("/sneakers", (req, res) => {
-    tags
+router.get("/sneakers/collection", (req, res) => {
+  tags
     .find()
     .then(tags => {
       sneakers
@@ -23,7 +23,6 @@ router.get("/sneakers", (req, res) => {
       console.log("error looking up tags", err);
     });
 });
-
 
 router.get("/sneakers/:cat", (req, res) => {
   const cat = req.params.cat;
