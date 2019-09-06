@@ -48,7 +48,14 @@ router.get("/sneakers/:cat", (req, res) => {
 
 
 router.get("/one-product/:id", (req, res) => {
-  res.render("one-product");
+  const id = req.params.id;
+  sneakers
+        .find({ sneakers : id })
+        .then(dbRes => {
+          res.render("one_product", {sneakers});
+        })
+        .catch(err => {console.log(err)
+        });
 });
 
 router.get("/signup", (req, res) => {
