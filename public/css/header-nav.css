@@ -8,13 +8,13 @@
 }
 
 /* .nav-link-wrapper{
-width: 50%;
+width: 50%; 
 } */
 
 .nav-wrapper {
   border-bottom: 1px solid rgb(212, 212, 212);
   height:53px;
-  padding: 0 1.2rem;
+  padding: 0 0.8rem;
 }
 
 .nav-logo {
@@ -133,11 +133,11 @@ h2.logo-item {
 } */
 
 #sidebar{
-  position:relative;
+  position:absolute;
   
   right : -800px;
-  transition : left .4s linear;
-  height:100%;
+  transition : right .4s linear;
+  height:auto;
   width: 200px;
   background-color: white;
 }
