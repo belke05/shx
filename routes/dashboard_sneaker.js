@@ -12,7 +12,7 @@ router.get("/prod-add", (req, res, next) => {
       console.log("error rendering the tags", dbErr);
     });
 });
-
+// ENDNENENENENENENEENE HERE
 router.post("/prod-add", (req, res, next) => {
   const { sneaker } = body.req;
 });
