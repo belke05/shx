@@ -8,16 +8,36 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+router.get("/sneakers/collection", (req, res) => {
+    tags
+    .find()
+    .then(tags => {
+      sneakers
+          .find()
+            .then(
+              sneakers => {
+                res.render("products", { sneakers, tags }),
+              console.log("sneakers")
+            })
+        .catch(console.log("error looking up sneakers"));
+    })
+    .catch(err => {
+      console.log("error looking up tags", err);
+    });
+});
+
+
 router.get("/sneakers/:cat", (req, res) => {
   const cat = req.params.cat;
+  const sneak = req.params.name;
   tags
     .find()
     .then(tags => {
       sneakers
-        .find({ category: cat })
-        .then(category => {
-          console.log("the shoes in the category are", category);
-          res.render("products", { category, tags });
+        .find({ sneakers: sneak, category : cat })
+        .then((sneakers) => {
+          console.log("the shoes in the category are", sneakers);
+          res.render("products", { sneakers, tags, category : cat });
         })
         .catch(console.log("error looking up sneakers"));
     })
@@ -26,17 +46,6 @@ router.get("/sneakers/:cat", (req, res) => {
     });
 });
 
-router.get("/sneakers", (req, res) => {
-  sneakers
-    .find()
-    .then(
-      sneakers => res.render("products", { sneakers, tags }),
-      console.log("sneakers")
-    )
-    .catch(err => {
-      console / log(err);
-    });
-});
 
 router.get("/one-product/:id", (req, res) => {
   res.render("one-product");
