@@ -7,7 +7,7 @@ function postTag(evt) {
   evt.preventDefault(); // prevent default will prevent the default behaviour of a form which
   // is reloading
   axios
-    .post("http://localhost:3000/tag-add", { label: inputTag.value })
+    .post("http://localhost:4000/tag-add", { label: inputTag.value })
     .then(serverRes => {
       console.log(serverRes);
       appendTag(serverRes.data);

@@ -8,7 +8,10 @@ router.get("/prod-manage", (req, res, next) => {
   Sneaker.find()
     .then(sneakers => {
       console.log("the sneakers found are", sneakers);
-      res.render("products_manage", { sneakers });
+      res.render("products_manage", {
+        sneakers,
+        scripts: ["client_delete.js"]
+      });
     })
     .catch(dbErr => {
       console.log("error finding sneakers", dbErr);
@@ -127,7 +130,7 @@ router.get("/product-delete/:id", (req, res, next) => {
   Sneaker.findByIdAndDelete(req.params.id)
     .then(deletedSneaker => {
       console.log("sneaker deleted", deletedSneaker);
-      res.redirect("/prod-manage");
+      res.send(deletedSneaker);
     })
     .catch(dbErr => {
       console.log("error during sneaker deletion", dbErr);
