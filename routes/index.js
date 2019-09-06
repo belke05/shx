@@ -24,6 +24,7 @@ router.get("/sneakers", (req, res) => {
     });
 });
 
+
 router.get("/sneakers/:cat", (req, res) => {
   const cat = req.params.cat;
   const sneak = req.params.name;

@@ -21,4 +21,5 @@ function appendTag(tag) {
   // listTags
 } 
 
+
 btnTag.onclick = postTag;

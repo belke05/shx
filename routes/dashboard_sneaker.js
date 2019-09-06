@@ -108,6 +108,7 @@ router.post("/product-edit/:id", (req, res, next) => {
     category,
     id_tags
   };
+  
   Sneaker.findByIdAndUpdate(sneakerID, sneakerUpdate)
     .then(sneaker => {
       console.log(sneaker, "sneaker was updated");
