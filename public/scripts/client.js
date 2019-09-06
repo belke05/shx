@@ -12,8 +12,6 @@ function postTag(evt) {
   })
   .catch(serverErr => console.log(serverErr))
 }
-
-
 function appendTag(tag) {
   console.log("clicked");
   const option = document.createElement("option");
@@ -21,6 +19,6 @@ function appendTag(tag) {
   option.textContent = tag.label;
   listTags.appendChild(option);
   // listTags
-}
+} 
 
 btnTag.onclick = postTag;
