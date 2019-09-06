@@ -70,4 +70,43 @@ router.post("/tag-add", (req, res, next) => {
     });
 });
 
+router.get("/product-edit/:id", (req, res, next) => {
+  const sneakerID = req.params.id;
+  Sneaker.findById(sneakerID)
+    .then(sneaker => {
+      Tags.find()
+        .then(tags => {
+          res.render("product_edit", { sneaker, tags });
+        })
+        .catch(dbErr => {
+          console.log("error during finding of all tags", tags);
+        });
+    })
+    .catch(dbErr => {
+      console.log("error during finding specific sneaker", dbErr);
+    });
+});
+
+router.post("/product-edit/:id", (req, res, next) => {
+  const sneakerID = req.params.id;
+  const { name, ref, sizes, description, price, category, id_tags } = req.body;
+  const sneakerUpdate = {
+    name,
+    ref,
+    sizes,
+    description,
+    price,
+    category,
+    id_tags
+  };
+  Sneaker.findByIdAndUpdate(sneakerID, sneakerUpdate)
+    .then(sneaker => {
+      console.log(sneaker, "sneaker was updated");
+      res.redirect("/prod-manage");
+    })
+    .catch(dbErr => {
+      console.log("error editing the shoe", dbErr);
+    });
+});
+
 module.exports = router;
