@@ -35,7 +35,7 @@ router.post("/signup", (req, res, next) => {
   });
   
   //Authenticating
-  
+   
   router.post("/signin", (req, res, next) => {
     const user = req.body;
     if (!user.email || !user.password) {
