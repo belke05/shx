@@ -22,6 +22,17 @@ router.post("/filter/tags", (req, res) => {
     });
 });
 
+router.post("/nofilter", (req, res) => {
+  sneakers
+    .find()
+    .then(sneakers => {
+      res.send(sneakers);
+    })
+    .catch(dberr => {
+      console.log(dberr);
+    });
+});
+
 router.get("/sneakers/collection", (req, res) => {
   tags
     .find()

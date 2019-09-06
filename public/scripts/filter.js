@@ -8,6 +8,9 @@ function updateTags() {
       filterTags.push(inputTag.dataset.tagId);
     }
   });
+  if (filterTags.length == 0) {
+    return getAll();
+  }
   // displayed = [];
   axios
     .post(`/filter/tags`, { tags: filterTags })
@@ -41,6 +44,16 @@ function addsneakers(snks) {
 inputTags.forEach(tag => {
   tag.onclick = updateTags;
 });
-// `<a href="/one-product/${}" class="product-item-wrapper" id="5d725d10c368034b44f95855">
-//
-//       </a>`
+
+function getAll() {
+  axios
+    .post(`/nofilter`, { tags: filterTags })
+    .then(servRes => {
+      console.log("data response", servRes.data);
+      addsneakers(servRes.data);
+      // displaycheck(allowedSneakers);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
