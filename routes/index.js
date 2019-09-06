@@ -46,7 +46,7 @@ router.get("/sneakers/:cat", (req, res) => {
 router.get("/one-product/:id", (req, res) => {
   const id = req.params.id;
   sneakers
-    .find({ sneakers: id })
+    .findById(id)
     .then(sneaker => {
       res.render("one_product", { sneaker });
     })
