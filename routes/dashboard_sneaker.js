@@ -14,7 +14,18 @@ router.get("/prod-add", (req, res, next) => {
       console.log("error finding the tags", dbErr);
     });
 });
-// ENDNENENENENENENEENE HERE
+
+router.get("/prod-manage", (req, res, next) => {
+  Sneaker.find()
+    .then(sneakers => {
+      console.log("the sneakers found are", sneakers);
+      res.render("products_manage", { sneakers });
+    })
+    .catch(dbErr => {
+      console.log("error finding sneakers", dbErr);
+    });
+});
+
 router.post(
   "/prod-add",
   uploadMiddleware.single("sneaker_img"),
@@ -66,6 +77,13 @@ router.post("/tag-add", (req, res, next) => {
     .catch(dbErr => {
       console.log("error creating a new tag", dbErr);
     });
+});
+
+router.get("/product-edit/:id", (req, res, next) => {
+  const sneakerID = req.params.id;
+  Sneaker.findById(sneakerID).then(sneaker => {
+    res.render("product_edit", { sneaker });
+  });
 });
 
 module.exports = router;
