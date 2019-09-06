@@ -1,6 +1,3 @@
-console.log("hello")
-
-
 const inputTag = document.getElementById("new_tag_name");
 const btnTag = document.getElementById("btn_new_tag");
 const listTags = document.getElementById("tags");
@@ -16,6 +13,7 @@ function postTag(evt) {
   .catch(serverErr => console.log(serverErr))
 }
 
+
 function appendTag(tag) {
   console.log("clicked");
   const option = document.createElement("option");
@@ -23,8 +21,6 @@ function appendTag(tag) {
   option.textContent = tag.label;
   listTags.appendChild(option);
   // listTags
-  
 }
-
 
 btnTag.onclick = postTag;

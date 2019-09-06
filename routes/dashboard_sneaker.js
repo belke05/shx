@@ -56,7 +56,7 @@ router.post(
       .then(createdSneaker => {
         console.log(createdSneaker, "was created");
         // res.redirect("/prod-add");
-        res.redirect("/sneakers");
+        res.redirect("/sneakers/collection");
       })
       .catch(dbErr => {
         console.log("error during creation of new sneaker", dbErr);
@@ -115,6 +115,17 @@ router.post("/product-edit/:id", (req, res, next) => {
     })
     .catch(dbErr => {
       console.log("error editing the shoe", dbErr);
+    });
+});
+
+router.get("/product-delete/:id", (req, res, next) => {
+  Sneaker.findByIdAndDelete(req.params.id)
+    .then(deletedSneaker => {
+      console.log("sneaker deleted", deletedSneaker);
+      res.redirect("/prod-manage");
+    })
+    .catch(dbErr => {
+      console.log("error during sneaker deletion", dbErr);
     });
 });
 

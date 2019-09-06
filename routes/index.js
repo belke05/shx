@@ -13,19 +13,16 @@ router.get("/sneakers", (req, res) => {
     .find()
     .then(tags => {
       sneakers
-          .find()
-            .then(
-              sneakers => {
-                res.render("products", { sneakers, tags }),
-              console.log("sneakers")
-            })
+        .find()
+        .then(sneakers => {
+          res.render("products", { sneakers, tags }), console.log("sneakers");
+        })
         .catch(console.log("error looking up sneakers"));
     })
     .catch(err => {
       console.log("error looking up tags", err);
     });
 });
-
 
 router.get("/sneakers/:cat", (req, res) => {
   const cat = req.params.cat;
@@ -34,10 +31,10 @@ router.get("/sneakers/:cat", (req, res) => {
     .find()
     .then(tags => {
       sneakers
-        .find({ sneakers: sneak, category : cat })
-        .then((sneakers) => {
+        .find({ sneakers: sneak, category: cat })
+        .then(sneakers => {
           console.log("the shoes in the category are", sneakers);
-          res.render("products", { sneakers, tags, category : cat });
+          res.render("products", { sneakers, tags, category: cat });
         })
         .catch(console.log("error looking up sneakers"));
     })
@@ -46,16 +43,16 @@ router.get("/sneakers/:cat", (req, res) => {
     });
 });
 
-
 router.get("/one-product/:id", (req, res) => {
   const id = req.params.id;
   sneakers
-        .find({ sneakers : id })
-        .then(dbRes => {
-          res.render("one_product", {sneakers});
-        })
-        .catch(err => {console.log(err)
-        });
+    .findById(id)
+    .then(sneaker => {
+      res.render("one_product", { sneaker });
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
 
 router.get("/signup", (req, res) => {
