@@ -119,4 +119,15 @@ router.post("/product-edit/:id", (req, res, next) => {
     });
 });
 
+router.post("product-delete/:id", (req, res, next) => {
+  Sneaker.findByIdAndDelete(req.params.id)
+    .then(deletedSneaker => {
+      console.log("sneaker deleted", deletedSneaker);
+      res.redirect("/prod-manage");
+    })
+    .catch(dbErr => {
+      console.log("error during sneaker deletion", dbErr);
+    });
+});
+
 module.exports = router;
