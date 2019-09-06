@@ -4,6 +4,17 @@ const Sneaker = require("../models/Sneaker.js");
 const Tags = require("../models/Tag.js");
 const uploadMiddleware = require("../config/cloudinary.js");
 
+router.get("/prod-manage", (req, res, next) => {
+  Sneaker.find()
+    .then(sneakers => {
+      console.log("the sneakers found are", sneakers);
+      res.render("products_manage", { sneakers });
+    })
+    .catch(dbErr => {
+      console.log("error finding sneakers", dbErr);
+    });
+});
+
 router.get("/prod-add", (req, res, next) => {
   Tags.find()
     .then(tags => {
@@ -14,7 +25,6 @@ router.get("/prod-add", (req, res, next) => {
       console.log("error finding the tags", dbErr);
     });
 });
-
 
 router.post(
   "/prod-add",
@@ -41,7 +51,7 @@ router.post(
     if (req.file) {
       newSneaker.imgName = req.file.originalname;
       newSneaker.imgPath = req.file.secure_url;
-    }else console.log("pas de fichier")
+    } else console.log("pas de fichier");
     Sneaker.create(newSneaker)
       .then(createdSneaker => {
         console.log(createdSneaker, "was created");
