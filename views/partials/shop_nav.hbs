@@ -12,7 +12,9 @@
             <h2 class="logo-item">SNEAKLOVE</h2>
           </a>
         </div>
+        
         <ul class="nav-link flexed-item">
+          
           <li class="nav-item animated-link">
             <a href="/sneakers/collection">Collection</a>
           </li>
@@ -33,7 +35,36 @@
             <a href="/prod-manage">Manage products</a>
           </li>
           {{/if}}
+          
         </ul>
+        {{!-- <aside id="sidebar">
+        <ul id= "nav-mobile" class="is-hidden">
+          <li class="nav-item mobile animated-link is-hidden">
+            <a href="/sneakers/collection">Collection</a>
+          </li>
+          <li class="nav-item mobile animated-link is-hidden">
+            <a href="/sneakers/men">Men</a>
+          </li>
+          <li class="nav-item mobile animated-link is-hidden">
+            <a href="/sneakers/women">Women</a>
+          </li>
+          <li class="nav-item mobile animated-link is-hidden">
+            <a href="/sneakers/kids">Kids</a>
+          </li>
+          {{#if isLoggedIn}}
+          <li class="nav-item mobile animated-link nav-item-admin is-hidden">
+            <a href="/prod-add">Add product</a>
+          </li>
+           <li class="nav-item mobile animated-link nav-item-admin is-hidden">
+            <a href="/prod-manage">Manage products</a>
+          </li>
+          {{/if}}
+          
+        </ul>
+        </aside> --}}
+      {{> shop_aside}}
+
+
       </div>
       <div class="flexed-item nav-end">
         {{#unless isLoggedIn}}
@@ -48,6 +79,7 @@
         {{/if}}
         <i class="fas fa-shopping-cart shop-cart-icon nav-end-item"></i>
       </div>
+        <i id="burger" class="fa fa-bars"></i>
     </nav>
   </header>
 </div>

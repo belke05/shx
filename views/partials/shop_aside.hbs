@@ -1,0 +1,41 @@
+<aside id="sidebar">
+        <ul id= "nav-mobile" >
+          <li class="nav-item mobile animated-link ">
+            <a href="/sneakers/collection">Collection</a>
+          </li>
+          <li class="nav-item mobile animated-link ">
+            <a href="/sneakers/men">Men</a>
+          </li>
+          <li class="nav-item mobile animated-link ">
+            <a href="/sneakers/women">Women</a>
+          </li>
+          <li class="nav-item mobile animated-link ">
+            <a href="/sneakers/kids">Kids</a>
+          </li>
+          {{#if isLoggedIn}}
+          <li class="nav-item mobile animated-link nav-item-admin ">
+            <a href="/prod-add">Add product</a>
+          </li>
+           <li class="nav-item mobile animated-link nav-item-admin ">
+            <a href="/prod-manage">Manage products</a>
+          </li>
+          {{/if}}
+          {{#unless isLoggedIn}}
+          <li class="nav-item mobile animated-link nav-item-admin ">
+        <a  href="/signin" id="nav_login" class="button-ternary flexed-item nav-end-item">
+          Sign in
+        </a>
+        </li>
+        {{/unless}}
+        {{#if isLoggedIn}}
+        <li class="nav-item mobile animated-link nav-item-admin ">
+        <a  href="/logout" id="nav_logout" class="button-ternary flexed-item nav-end-item">
+          Log out
+        </a>
+        </li>
+        {{/if}}
+        <li class="nav-item mobile animated-link nav-item-admin ">
+        <i class="fas fa-shopping-cart shop-cart-icon nav-end-item"></i>
+        </li>
+        </ul>
+        </aside>
